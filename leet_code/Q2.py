@@ -2,30 +2,36 @@ def main() -> None:
     """Application initializer."""
 
     # arr: list[int] = [-8, -4, 0, 5, 10]
-    arr: list[int] = [-8, -4, 0, 5, 10][::-1][::-1]
+    arr: list[int] = [-8, -4, 0, 1, 0, 5, 10]
     print(is_monotonic(arr))
 
 
-def is_monotonic(arr: list[int]) -> list[int]:
+def is_monotonic(arr: list[int]) -> bool:
     """
-    Monotonic Array:
-    Question 2: An array is monotonic if it is either monotone increasing or monotone decreasing. An array is monotone increasing if all its elements from left to right are non-decreasing. An array is monotone decreasing if all  its elements from left to right are non-increasing. Given an integer array return true if the given array is monotonic, or false otherwise.
-    """
-    init = arr[0]
-    last = arr[-1]
+    Determine if a list of integers is monotonic based on the detection of increasing or decreasing sequences, as consequense it's a contradiction to have both.
 
-    if last >= init:
-        print('INC')
-        for x in arr:
-            if x < init:
-                return False
-            init = x
-    else:
-        print('DEC')
-        for x in arr:
-            if x > init:
-                return False
-            init = x
+    Args:
+        arr: list[int] -> List of integers
+
+    Returns:
+        bool -> True if the list is monotonic, False otherwise
+
+    Example:
+    >>> is_monotonic([-8, -4, 0, 5, 10])
+    True
+    >>> is_monotonic([-8, -4, 0, 5, 4, 10])
+    False
+    """
+
+    if len(arr) < 3:
+        return True
+    temp: bool = arr[1] > arr[0]
+    for i in range(len(arr) - 1):
+        if arr[i + 1] == arr[i]:
+            continue
+        if (arr[i + 1] > arr[i]) != temp:
+            return False
+        temp = arr[i + 1] > arr[i]
     return True
 
 
