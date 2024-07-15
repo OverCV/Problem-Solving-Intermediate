@@ -1,8 +1,3 @@
-"""
-Question 1: Rotate Array - Given an array, rotate the array to the right by k steps, where k is non-negative.
-"""
-
-
 def main() -> None:
     """Application initializer."""
 
