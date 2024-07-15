@@ -6,7 +6,8 @@ Question 1: Rotate Array - Given an array, rotate the array to the right by k st
 def main() -> None:
     """Application initializer."""
 
-    arr: list[int] = [1, 5, 6, 3, 4]
+    # arr: list[int] = [1, 5, 6, 3, 4]
+    arr: list[int] = [10, 6, 5, 6, 7]
     print(max_container(arr))
 
 
