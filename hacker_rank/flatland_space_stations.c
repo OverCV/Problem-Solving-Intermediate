@@ -4,3 +4,8 @@ Given n cities in a linear arrangement, some of which have space stations, deter
 
 #include <stdio.h>
 #include <stdlib.h>
+
+void main()
+{
+    printf("Math!");
+}

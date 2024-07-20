@@ -48,11 +48,32 @@ This command executes pytest with verbose output (-v) and shows stdout output (-
 
 #### Setup and Compilation
 
-1. **Install GCC Compiler:**
+1. **Install Makefile on Windows:**
+   First install the Makefile for Windows from the following link: [Makefile for Windows](https://sourceforge.net/projects/mingw/) and add the bin directory to the system path.
+
+   Later on you can check the version of MingW installed by running the following command:
+
+   ```powershell
+   mingw-get --version
+   ```
+
+   Now we can proceed with the installation of the make utility:
+
+   ```powershell
+   mingw-get install make
+   ```
+
+   Then, in the bin directory we rename the make executable with `make.exe`. Finally you can check the version of make installed by running the following command:
+
+   ```powershell
+   make --version
+   ```
+
+2. **Install GCC Compiler:**
 
    Ensure that you have the GCC compiler installed on your system.
 
-2. **Compile C Programs:**
+3. **Compile C Programs:**
 
     Compile your C code (replace main.c with your actual C source file if different):
 
