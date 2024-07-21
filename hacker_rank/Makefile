@@ -1,25 +1,33 @@
-# El compilador
+# Definir el compilador
 CC = gcc
 
-# Opciones del compilador
-CFLAGS = -Wall -g
+# Definir las opciones del compilador
+CFLAGS = -Wall -Wextra -Werror
 
-# Archivos de origen
-SRCS = main.c
-
-# Archivos de cabecera
-HEADERS = variables.h
-
-# Nombre del ejecutable
+# Definir el nombre del archivo ejecutable
 TARGET = main
 
-# Regla por defecto
-all: $(TARGET)
+# Definir los archivos fuente
+SRCS = main.c
 
-# Regla para compilar el ejecutable
-$(TARGET): $(SRCS) $(HEADERS)
-    $(CC) $(CFLAGS) $(SRCS) -o $(TARGET)
+# Definir los archivos objeto (el mismo nombre que los archivos fuente pero con extensión .o)
+OBJS = $(SRCS:.c=.o)
 
-# Regla para limpiar archivos generados
+# Regla por defecto: compilar, ejecutar y limpiar el programa
+all: $(TARGET) run clean
+
+# Regla para compilar el archivo ejecutable
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+
+# Regla para compilar los archivos objeto
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Regla para ejecutar el programa
+run: $(TARGET)
+	./$(TARGET)
+
+# Regla para limpiar los archivos generados
 clean:
-    rm -f $(TARGET)
+	del $(OBJS) $(TARGET).exe

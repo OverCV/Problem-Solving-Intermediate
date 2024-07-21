@@ -7,13 +7,14 @@ def weightedUniformStrings(chain, queries):
     words = {
         (ord(k) - 96) * i
         for k, v in words.items()
-        for i in range(1, v + 1)
+        for i in range(
+            1,
+            v + 1,
+        )
     }
     for q in queries:
         res.append('Yes' if q in words else 'No')
-    print()
     print('\n'.join(res))
-    print()
     return res
 
 
